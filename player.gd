@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 func get_input() -> void:
 	var input_direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	look_at(get_global_mouse_position())
 	velocity = input_direction * speed
 	
 func _physics_process(delta: float) -> void:
