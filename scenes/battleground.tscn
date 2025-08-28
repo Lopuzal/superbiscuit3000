@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://btsyyaypebshr"]
+
+[ext_resource type="PackedScene" uid="uid://q34md3ehlvkx" path="res://scenes/player.tscn" id="2_66gel"]
+[ext_resource type="PackedScene" uid="uid://w26eo12lntqw" path="res://scenes/enemy_spawner.tscn" id="2_jl80f"]
+
+[node name="Battleground" type="Node2D"]
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("2_66gel")]
+position = Vector2(919, 452)
+
+[node name="EnnemySpawner" parent="." instance=ExtResource("2_jl80f")]
+position = Vector2(361, 277)
+disable_after = 3

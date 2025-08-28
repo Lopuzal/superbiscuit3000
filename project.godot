@@ -15,14 +15,27 @@ run/main_scene="uid://btsyyaypebshr"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SceneReferences="*res://autoloads/scene_references.gd"
+
 [debug]
 
 gdscript/warnings/untyped_declaration=2
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "red",
+"res://autoloads/": "orange",
+"res://ressources/": "yellow",
+"res://scenes/": "green"
+}
+
 [global_group]
 
 player="The player"
-ennemies="Group containing every ennemies in the game"
+enemies="Group containing every ennemies in the game"
 
 [input]
 
@@ -54,3 +67,10 @@ move_down={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":1,"axis_value":1.0,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="world"
+2d_physics/layer_2="player"
+2d_physics/layer_3="enemy"
+2d_physics/layer_4="pickup"
