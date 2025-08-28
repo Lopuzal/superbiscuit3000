@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwcn6uil8xqan"]
+
+[ext_resource type="Theme" uid="uid://cvm5rx44rt0vw" path="res://theme.tres" id="1_hdmo1"]
+[ext_resource type="Script" uid="uid://ewe256vwixej" path="res://pause_menu.gd" id="2_nwcfo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nwcfo"]
+bg_color = Color(0.8, 0.644, 0.28, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.6, 0.483, 0.21, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_05uyy"]
+bg_color = Color(0.6, 0.483, 0.21, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p81d2"]
+bg_color = Color(0.8, 0.644, 0.28, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="PauseMenu" type="ColorRect"]
+process_mode = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hdmo1")
+color = Color(0, 0, 0, 0.470588)
+script = ExtResource("2_nwcfo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -50.0
+offset_right = 150.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="Continue" type="Button" parent="VBoxContainer"]
+process_mode = 2
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "Continue"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+process_mode = 2
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_nwcfo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_05uyy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_p81d2")
+text = "Exit"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

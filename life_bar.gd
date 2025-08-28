@@ -20,7 +20,6 @@ func update_color() -> void:
 	var player_life_ratio: float = player_life / player_max_life
 	value = player_life_ratio
 
-	var new_stylebox: StyleBoxFlat = StyleBoxFlat.new()
+	var new_stylebox: StyleBoxFlat = get_theme_stylebox("fill")
 	new_stylebox.bg_color = Color((1 - player_life_ratio), 0.5, 0)
 	add_theme_stylebox_override("fill", new_stylebox)
-	print(player_life_ratio)

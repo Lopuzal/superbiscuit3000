@@ -1,11 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ghxvxhnhgp7r"]
+[gd_scene load_steps=6 format=3 uid="uid://ghxvxhnhgp7r"]
 
 [ext_resource type="Script" uid="uid://bk5pud1oe0xp8" path="res://life.gd" id="1_80edf"]
+[ext_resource type="PackedScene" uid="uid://bwcn6uil8xqan" path="res://pause_menu.tscn" id="1_cor1f"]
 [ext_resource type="LabelSettings" uid="uid://cof6biy1c6r77" path="res://label_settings.tres" id="1_q8o8l"]
+[ext_resource type="Theme" uid="uid://cvm5rx44rt0vw" path="res://theme.tres" id="1_u77ya"]
 [ext_resource type="Script" uid="uid://blg0ee17vm6uv" path="res://life_bar.gd" id="2_6lon5"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8o8l"]
-bg_color = Color(0.2, 0.14, 0, 0.380392)
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -14,34 +13,53 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_u77ya")
 
-[node name="Level" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1013.0
-offset_top = 3.0
-offset_right = 1148.0
-offset_bottom = 48.0
-text = "Niveau 1"
-label_settings = ExtResource("1_q8o8l")
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 
-[node name="Life" type="Label" parent="."]
+[node name="Control" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="LifeBar" type="ProgressBar" parent="MarginContainer/Control"]
+layout_mode = 1
+offset_right = 305.0
+offset_bottom = 45.0
+max_value = 1.0
+value = 1.0
+script = ExtResource("2_6lon5")
+
+[node name="Life" type="Label" parent="MarginContainer/Control"]
 layout_mode = 0
-offset_left = 320.0
-offset_top = 3.0
-offset_right = 423.0
-offset_bottom = 48.0
+offset_left = 315.0
+offset_right = 418.0
+offset_bottom = 45.0
 text = "100 PV"
 label_settings = ExtResource("1_q8o8l")
 script = ExtResource("1_80edf")
 
-[node name="LifeBar" type="ProgressBar" parent="."]
-layout_mode = 0
-offset_left = 3.0
-offset_top = 3.0
-offset_right = 308.0
-offset_bottom = 48.0
-theme_override_font_sizes/font_size = 32
-theme_override_styles/background = SubResource("StyleBoxFlat_q8o8l")
-max_value = 1.0
-value = 1.0
-script = ExtResource("2_6lon5")
+[node name="LevelName" type="Label" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -135.0
+offset_bottom = 45.0
+grow_horizontal = 0
+text = "Level 1"
+label_settings = ExtResource("1_q8o8l")
+horizontal_alignment = 2
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_cor1f")]
+visible = false
+z_index = 10
+layout_mode = 1

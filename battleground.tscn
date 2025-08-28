@@ -1,15 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://btsyyaypebshr"]
+[gd_scene load_steps=5 format=3 uid="uid://btsyyaypebshr"]
 
-[ext_resource type="PackedScene" uid="uid://b23a22itfrbm1" path="res://default_enemy.tscn" id="1_wrkao"]
-[ext_resource type="PackedScene" uid="uid://q34md3ehlvkx" path="res://player.tscn" id="2_66gel"]
+[ext_resource type="PackedScene" uid="uid://ghxvxhnhgp7r" path="res://gui.tscn" id="1_ildd2"]
+[ext_resource type="PackedScene" uid="uid://crh53ku2snjaa" path="res://default_enemy.tscn" id="1_wrkao"]
+[ext_resource type="PackedScene" uid="uid://cth0n2yyb7na2" path="res://player.tscn" id="2_66gel"]
+
+[sub_resource type="GDScript" id="GDScript_ildd2"]
+resource_name = "GUI"
+script/source = "extends Control
+
+func _ready() -> void:
+	NodeReferences.GUI = self
+"
 
 [node name="Battleground" type="Node2D"]
+process_mode = 1
 
 [node name="Enemy" parent="." instance=ExtResource("1_wrkao")]
 position = Vector2(430, 329)
+speed = 200.0
 
-[node name="TestPlayer" type="Marker2D" parent="." groups=["player"]]
-position = Vector2(1102, 208)
+[node name="Enemy2" parent="." instance=ExtResource("1_wrkao")]
+position = Vector2(992, 154)
+speed = 200.0
 
-[node name="Player" parent="." instance=ExtResource("2_66gel")]
+[node name="Player" parent="." groups=["player"] instance=ExtResource("2_66gel")]
 position = Vector2(698, 340)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" parent="CanvasLayer" instance=ExtResource("1_ildd2")]
+script = SubResource("GDScript_ildd2")
