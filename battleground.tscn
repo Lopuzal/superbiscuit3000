@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://btsyyaypebshr"]
+[gd_scene load_steps=7 format=3 uid="uid://btsyyaypebshr"]
 
 [ext_resource type="PackedScene" uid="uid://ghxvxhnhgp7r" path="res://gui.tscn" id="1_ildd2"]
 [ext_resource type="PackedScene" uid="uid://crh53ku2snjaa" path="res://default_enemy.tscn" id="1_wrkao"]
 [ext_resource type="PackedScene" uid="uid://cth0n2yyb7na2" path="res://player.tscn" id="2_66gel"]
+[ext_resource type="AudioStream" uid="uid://bxjdcr52xu8qe" path="res://02 - Hateshinaki Tabiji.mp3" id="4_t5hr7"]
 
 [sub_resource type="GDScript" id="GDScript_ildd2"]
 resource_name = "GUI"
@@ -10,6 +11,13 @@ script/source = "extends Control
 
 func _ready() -> void:
 	NodeReferences.GUI = self
+"
+
+[sub_resource type="GDScript" id="GDScript_t5hr7"]
+script/source = "extends AudioStreamPlayer
+
+func _ready() -> void:
+	NodeReferences.Music = self
 "
 
 [node name="Battleground" type="Node2D"]
@@ -30,3 +38,11 @@ position = Vector2(698, 340)
 
 [node name="GUI" parent="CanvasLayer" instance=ExtResource("1_ildd2")]
 script = SubResource("GDScript_ildd2")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+stream = ExtResource("4_t5hr7")
+volume_db = -10.0
+autoplay = true
+script = SubResource("GDScript_t5hr7")

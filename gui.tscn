@@ -43,7 +43,7 @@ layout_mode = 0
 offset_left = 315.0
 offset_right = 418.0
 offset_bottom = 45.0
-text = "100 PV"
+text = "100 HP"
 label_settings = ExtResource("1_q8o8l")
 script = ExtResource("1_80edf")
 
