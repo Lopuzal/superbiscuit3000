@@ -16,7 +16,7 @@ func get_input() -> void:
 func _physics_process(delta: float) -> void:
 	get_input()
 	move_and_collide(velocity * delta)
-
+	
 func die() -> void:
 	print("player dead lol")
 	queue_free()

@@ -28,7 +28,7 @@ gdscript/warnings/untyped_declaration=2
 folder_colors={
 "res://assets/": "red",
 "res://autoloads/": "orange",
-"res://ressources/": "yellow",
+"res://resources/": "yellow",
 "res://scenes/": "green"
 }
 
