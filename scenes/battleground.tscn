@@ -1,17 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://btsyyaypebshr"]
+[gd_scene load_steps=6 format=3 uid="uid://btsyyaypebshr"]
 
 [ext_resource type="PackedScene" uid="uid://q34md3ehlvkx" path="res://scenes/player.tscn" id="2_66gel"]
 [ext_resource type="PackedScene" uid="uid://w26eo12lntqw" path="res://scenes/enemy_spawner.tscn" id="2_jl80f"]
-
+[ext_resource type="PackedScene" uid="uid://ghxvxhnhgp7r" path="res://scenes/gui.tscn" id="3_v55xa"]
 [ext_resource type="AudioStream" uid="uid://bxjdcr52xu8qe" path="res://02 - Hateshinaki Tabiji.mp3" id="4_t5hr7"]
-
-[sub_resource type="GDScript" id="GDScript_ildd2"]
-resource_name = "GUI"
-script/source = "extends Control
-
-func _ready() -> void:
-	NodeReferences.GUI = self
-"
 
 [sub_resource type="GDScript" id="GDScript_t5hr7"]
 script/source = "extends AudioStreamPlayer
@@ -31,8 +23,7 @@ disable_after = 3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="GUI" parent="CanvasLayer" instance=ExtResource("1_ildd2")]
-script = SubResource("GDScript_ildd2")
+[node name="GUI" parent="CanvasLayer" instance=ExtResource("3_v55xa")]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true

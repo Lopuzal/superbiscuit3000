@@ -1,5 +1,6 @@
 extends CharacterBody2D
-
+signal life_changed
+signal max_life_changed
 ##How much life the character can have
 @export var max_life: float = 100.0:
 	set(value):
@@ -36,5 +37,5 @@ func die() -> void:
 	queue_free()
 
 func _on_hit_box_received_damage(damage_point: float) -> void:
-	hit_points -= damage_point
-	print("player received damage, new hit points = ", hit_points)
+	life -= damage_point
+	print("player received damage, new hit points = ", life)

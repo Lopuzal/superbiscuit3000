@@ -18,8 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 SceneReferences="*res://autoloads/scene_references.gd"
-PauseManager="*res://pause_manager.gd"
-NodeReferences="*res://node_references.gd"
+PauseManager="*res://scenes/pause_manager.gd"
+NodeReferences="*res://scenes/node_references.gd"
 
 [debug]
 

@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://ghxvxhnhgp7r"]
 
-[ext_resource type="Script" uid="uid://bk5pud1oe0xp8" path="res://life.gd" id="1_80edf"]
-[ext_resource type="PackedScene" uid="uid://bwcn6uil8xqan" path="res://pause_menu.tscn" id="1_cor1f"]
+[ext_resource type="Script" uid="uid://bk5pud1oe0xp8" path="res://scenes/life.gd" id="1_80edf"]
+[ext_resource type="PackedScene" uid="uid://bwcn6uil8xqan" path="res://scenes/pause_menu.tscn" id="1_cor1f"]
 [ext_resource type="LabelSettings" uid="uid://cof6biy1c6r77" path="res://label_settings.tres" id="1_q8o8l"]
 [ext_resource type="Theme" uid="uid://cvm5rx44rt0vw" path="res://theme.tres" id="1_u77ya"]
-[ext_resource type="Script" uid="uid://blg0ee17vm6uv" path="res://life_bar.gd" id="2_6lon5"]
+[ext_resource type="Script" uid="uid://blg0ee17vm6uv" path="res://scenes/life_bar.gd" id="2_6lon5"]
 
 [node name="GUI" type="Control"]
 layout_mode = 3
