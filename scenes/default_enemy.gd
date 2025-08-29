@@ -58,3 +58,6 @@ func _on_attack_cooldown_timer_timeout() -> void:
 	_can_attack = true
 
 #endregion
+
+func _on_hit_box_received_damage(damage_point: float) -> void:
+	hit_points -= damage_point
