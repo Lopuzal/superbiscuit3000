@@ -1,9 +1,17 @@
 extends CharacterBody2D
 
-@export var hit_points: float = 100.0 :
+##How much life the character can have
+@export var max_life: float = 100.0:
 	set(value):
-		hit_points = value
-		if hit_points <= 0 :
+		max_life = value
+		max_life_changed.emit(max_life)
+
+##How much life the character has at the moment
+@export var life: float = 100.0:
+	set(value):
+		life = value
+		life_changed.emit(life)
+		if life <= 0:
 			die()
 		
 @export var speed: float = 400.0
