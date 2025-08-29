@@ -27,3 +27,11 @@ func _on_toggle_music_toggled(toggled_on: bool) -> void:
 	else:
 		NodeReferences.Music.stop()
 		print("Music is off!")
+
+
+func _on_music_bar_value_changed(value: float) -> void:
+	NodeReferences.Music.volume_linear = value * 0.1
+
+	if not NodeReferences.Music.playing:
+		NodeReferences.Music.play()
+		NodeReferences.ToggleMusic.button_pressed = true
