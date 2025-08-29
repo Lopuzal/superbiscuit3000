@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://b23a22itfrbm1"]
+
+[ext_resource type="Texture2D" uid="uid://ox7hdpyu73no" path="res://icon.svg" id="1_nhlce"]
+[ext_resource type="Script" uid="uid://kx4f64i2sihh" path="res://scenes/default_enemy.gd" id="1_v1xnv"]
+[ext_resource type="Script" uid="uid://cqykxxaqlndsr" path="res://scenes/hit_box.gd" id="3_5tm3t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v1xnv"]
+radius = 14.8661
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qjvyg"]
+radius = 77.0584
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v4j5b"]
+radius = 60.0
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_v1xnv")
+speed = 200.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.00784314, 0.368627, 1)
+texture = ExtResource("1_nhlce")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_v1xnv")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("3_5tm3t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_qjvyg")
+debug_color = Color(0.767549, 0.383236, 0.604428, 0.42)
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_v4j5b")
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="area_exited" from="HurtBox" to="." method="_on_hurt_box_area_exited"]
+[connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_attack_cooldown_timer_timeout"]
