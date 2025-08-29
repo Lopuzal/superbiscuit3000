@@ -1,14 +1,36 @@
-[gd_scene load_steps=6 format=3 uid="uid://q34md3ehlvkx"]
+[gd_scene load_steps=9 format=3 uid="uid://q34md3ehlvkx"]
 
 [ext_resource type="Texture2D" uid="uid://ox7hdpyu73no" path="res://icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://wuerqgpmgit2" path="res://scenes/player.gd" id="1_onrkg"]
 [ext_resource type="Script" uid="uid://cqykxxaqlndsr" path="res://scenes/hit_box.gd" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://7uitcaygako3" path="res://attack_1.png" id="4_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://ddcrhta2dd4j8" path="res://attack_2.png" id="5_tuyoq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4flbx"]
 radius = 57.85
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dqkch"]
 radius = 14.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fjrip"]
+animations = [{
+"frames": [{
+"duration": 0.1,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qlg0r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tuyoq")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 6.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -30,5 +52,11 @@ metadata/_custom_type_script = "uid://cqykxxaqlndsr"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_dqkch")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(138, -4)
+scale = Vector2(9.65909, 9.65909)
+sprite_frames = SubResource("SpriteFrames_fjrip")
 
 [connection signal="received_damage" from="HitBox" to="." method="_on_hit_box_received_damage"]
