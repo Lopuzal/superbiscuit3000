@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://q34md3ehlvkx"]
+[gd_scene load_steps=10 format=3 uid="uid://q34md3ehlvkx"]
 
 [ext_resource type="Texture2D" uid="uid://ox7hdpyu73no" path="res://icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://wuerqgpmgit2" path="res://scenes/player.gd" id="1_onrkg"]
@@ -24,13 +24,16 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_tuyoq")
 }, {
-"duration": 1.0,
+"duration": 0.1,
 "texture": null
 }],
 "loop": false,
 "name": &"default",
 "speed": 6.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
+size = Vector2(144, 81)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -52,10 +55,26 @@ metadata/_custom_type_script = "uid://cqykxxaqlndsr"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_dqkch")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="MeleeAttack" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(138, -4)
 scale = Vector2(9.65909, 9.65909)
 sprite_frames = SubResource("SpriteFrames_fjrip")
 
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("3_qhqgy")
+metadata/_custom_type_script = "uid://cqykxxaqlndsr"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(149, -1.5)
+shape = SubResource("RectangleShape2D_qlg0r")
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
+
 [connection signal="received_damage" from="HitBox" to="." method="_on_hit_box_received_damage"]
+[connection signal="animation_finished" from="MeleeAttack" to="." method="_on_melee_attack_animation_finished"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="area_exited" from="HurtBox" to="." method="_on_hurt_box_area_exited"]
+[connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_attack_cooldown_timer_timeout"]

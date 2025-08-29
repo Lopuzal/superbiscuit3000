@@ -44,6 +44,10 @@ shape = SubResource("CircleShape2D_v4j5b")
 
 [node name="AttackCooldownTimer" type="Timer" parent="."]
 
+[node name="DamageCooldownTimer" type="Timer" parent="."]
+
+[connection signal="received_damage" from="HitBox" to="." method="_on_hit_box_received_damage"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="area_exited" from="HurtBox" to="." method="_on_hurt_box_area_exited"]
 [connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_attack_cooldown_timer_timeout"]
+[connection signal="timeout" from="DamageCooldownTimer" to="." method="_on_damage_cooldown_timer_timeout"]
